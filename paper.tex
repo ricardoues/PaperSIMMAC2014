@@ -7,12 +7,12 @@
 
 \pagestyle{fancy}
 \fancyhead{}
-\fancyhead[RE]{\thepage \hfill {\sc r. ríos -- c.gámez }}
+\fancyhead[RE]{\thepage \hfill {\sc a. rib\'{o} -- g. molina -- r. r\'{i}os  }}
 \fancyhead[LO]{{\sc Combining neural networks and geostatistics for landslide hazard assessment of San Salvador Metropolitan Area, El Salvador } \hfill \thepage}
 \fancyfoot{}
 \fancyfoot[RE]{{\scriptsize{\it Rev.Mate.Teor.Aplic.} (ISSN 1409-2433) {Vol. 19}(1): 1--10, January 2012}}
 \fancyfoot[LO]{{\scriptsize{\it Rev.Mate.Teor.Aplic.} (ISSN 1409-2433) {Vol. 19}(1): 1--10, January 2012}}
-\paginas{1}{10} % Numeros de página, la versión final la pone el editor; Page numbers, the Editor puts the final numbers
+\paginas{1}{10} % Numeros de pgina, la versión final la pone el editor; Page numbers, the Editor puts the final numbers
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphics}
@@ -55,18 +55,18 @@ Combinando redes neuronales y geoestad\'{i}stica para evaluaci\'{o}n de deslizam
 
 \maketitle
 
-\newpage 
+%\newpage 
 
 \selectlanguage{spanish}
 \begin{resumen}
-Esta contribución describe como se obtuvo un modelo de evaluación de deslizamiento de tierra para San Salvador, departamento de El Salvador. El análisis inicio con la obtención de una foto área del SNET-MARN con un total de 939407 puntos georeferenciados con el fin de producir un inventario de deslizamiento. En esta evaluación de los deslizamientos se uso 4792 eventos previamente foto-interpretados y 7 factores condicionantes incluyendo: geomorfología, geología, precipitaciones máximas, aceleraciones sísmicas, pendiente del terreno, distancia a carretera y falla geológica. Redes Neuronales Artificiales(RNA) fueron usadas para la evaluación de la susceptibilidad a deslizamiento de tierra, logrando que más del 80\% de deslizamientos fueran apropiadamente clasificados usando un criterio dentro y fuera de la muestra con la que se estimaron los parámetros del modelo. Regresión Logística fue usada como base de comparación, obteniendo este modelo un rendimiento inferior que el de RNA con un porcentaje de correcta clasificación abajo del 70\%. Para completar el análisis se realizo la interpolación de puntos usando el método krigging proveniente del enfoque geoestadístico. Finalmente, los resultados muestran que es posible obtener un mapa de riesgo a deslizamiento de tierra, haciendo uso de una combinación de RNA y técnicas geoestadísticas con lo cual la presente investigación puede ayudar a la mitigación de deslizamientos de tierra en El Salvador.
+Esta contribución describe como se obtuvo un modelo de evaluación de deslizamiento de tierra para San Salvador, departamento de El Salvador. El análisis inicio con la obtención de una foto área del MARN () con un total de 939407 puntos georeferenciados con el fin de producir un inventario de deslizamiento. En esta evaluación de los deslizamientos se uso 4792 eventos previamente foto-interpretados y 7 factores condicionantes incluyendo: geomorfología, geología, precipitaciones máximas, aceleraciones sísmicas, pendiente del terreno, distancia a carretera y falla geológica. Redes Neuronales Artificiales(RNA) fueron usadas para la evaluación de la susceptibilidad a deslizamiento de tierra, logrando que más del 80\% de deslizamientos fueran apropiadamente clasificados usando un criterio dentro y fuera de la muestra con la que se estimaron los parámetros del modelo. Regresión Logística fue usada como base de comparación, obteniendo este modelo un rendimiento inferior que el de RNA con un porcentaje de correcta clasificación abajo del 70\%. Para completar el análisis se realizo la interpolación de puntos usando el método krigging proveniente del enfoque geoestadístico. Finalmente, los resultados muestran que es posible obtener un mapa de riesgo a deslizamiento de tierra, haciendo uso de una combinación de RNA y técnicas geoestadísticas con lo cual la presente investigación puede ayudar a la mitigación de deslizamientos de tierra en El Salvador.
 \end{resumen}
 
-\PC deslizamiento de tierra, evaluación de riesgo, San Salvador, El Salvador, RNA, geoestadística.
+\PC deslizamiento de tierra, evaluación de riesgo, El Salvador, RNA, geoestadística.
 
 \begin{abstract}
 This contribution describes how we obtained a landslide hazard
-assessment model for San Salvador, department in El Salvador. The analysis started with an aerial photointerpretation from  SNET-MARN ((Servicio Nacional de Estudios Territoriales - Ministerio de Medio Ambiente y Recursos Naturales)  with a total amount of 939407 georeferenced points to produce a landslide inventory. In this
+assessment model for San Salvador, department in El Salvador. The analysis started with an aerial photointerpretation from  MARN (Ministry of Environment and Natural Resources of El Salvador)  with a total amount of 939407 georeferenced points to produce a landslide inventory. In this
 landslide assessment we have used 4792 events previously photo-interpretaded
 and 7 conditioning factors including: geomorphology, geology, rainfall intensity, peak ground accelaration, slope angle, road and fault distance. Artificial
 Neural Networks (ANNs) were applied for the assessment of susceptibility to
@@ -78,7 +78,7 @@ approach. Finally, the results show that is possible to derive a landslide hazar
 wherewith the present study can help landslide mitigation in El Salvador.
 \end{abstract}
 
-\KW landslide, hazard assessment, San Salvador, El Salvador, ANN, geostatistics.
+\KW landslide, hazard assessment, El Salvador, ANN, geostatistics.
 
 \AMS 62P12.% Mathematical Subject Classification, http://www.ams.org/mathscinet/msc/msc2010.html.
 
@@ -137,7 +137,7 @@ and neural networks (\cite{Melchiorre2011410},\cite{Zeng2001374}, \cite{Ermini20
 \section{Landslide inventory and data sources of input variables}
 \label{sec:landsinvet}
 The Landslide inventory was developed from photographic analysis on the study area, using 
-aerial photo from SNET-MARN which is presented in the Figure \ref{fig:img01}, where white areas represent regions of landslide occurrence which were processed using the software ILWIS. 
+aerial photo from MARN which is presented in the Figure \ref{fig:img01}, where white areas represent regions of landslide occurrence which were processed using the software ILWIS. 
 
  \begin{center}
   \begin{figure}[H]
@@ -148,11 +148,11 @@ aerial photo from SNET-MARN which is presented in the Figure \ref{fig:img01}, wh
   \end{figure}
  \end{center}
 
-Once that the white areas were georeferenced, a percentage of 0.5\% of the total points georeferenced shows landslide ocurrence. In addition to the landslide information the following data sources of input variables was given by SNET-MARN: 
+Once that the white areas were georeferenced, a percentage of 0.5\% of the total points georeferenced shows landslide ocurrence. In addition to the landslide information the following data sources of input variables was given by MARN: 
 \begin{enumerate}
 \item {\bf Geomorphology:} refers to landforms that result from lithospheric dynamics of geographic area.
 
-\item {\bf Slope:} derived from digital elevation model MARN-SNET
+\item {\bf Slope:} derived from digital elevation model MARN
 
 \item {\bf Geology:} Description of the geology of the area from the map German Geological Mission (scale 1:100,000).
 
@@ -199,7 +199,17 @@ p_{i} = \sum_{j=1}^{j^{*}} \lambda_{j} N_{j,i}
 In the context of the research problem $p_{i} $ and the number $ k^{*} $ represent 
 probability of landslide ocurrence and the number of input variables or causes associated with landslide ocurrence respectively.
 
-The method used for estimating the parameters of the model was an Hybrid Method: First of all Genetic Algorithms were used to avoid getting stuck in a local rather than a global minimum of error function, after that a local search was applied again to obtain a new local minimun.  
+The method used for estimating the parameters of the model was an Hybrid Method (\cite{McNelis2005}): Firstly heuristic genetic algorithm using a package developed in the R statistical software specifically developed for this purpose, was used to obtain 
+a good estimation of the parameters of the model. 
+
+The R package can be accessed from the following web address:
+ 
+
+
+
+
+
+ were used to avoid getting stuck in a local rather than a global minimum of error function, after that a local search was applied on the previous  to obtain a new local minimun.  
 
 
 \section{Spatial Prediction}
@@ -344,7 +354,7 @@ Other important variables could not be obtained such as landslide types (Rockfal
 
 
 \section{Acknowledgment}   
-The authors are indebted to M.SC. Giovanni Molina from SNET who provided the data and useful information about landslide modelling techniques.
+The authors are indebted to M.SC. Giovanni Molina from MARN who provided the data and useful information about landslide modelling techniques.
 
 
 
@@ -459,7 +469,9 @@ Xu~Zeng-wang.
 \bibitem{Ermini2005327}
 Artificial neural networks applied to landslide susceptibility assessment.
 \newblock \emph{Geomorphology}, 66\penalty0 (1–4):\penalty0 327 -- 343, 2005.
-
+\newblock ISSN 0169-555X
+%\newblock \doi{http://dx.doi.org/10.1016/j.geomorph.2004.09.025}.
+\newblock URL \url{http://www.sciencedirect.com/science/article/pii/S0169555X04002272}.
 
 
 
@@ -472,6 +484,17 @@ E. Yesilnacar and T. Topal.
 %\newblock \doi{10.1080/01431160310001618734}.
 \newblock URL
   \url{http://www.sciencedirect.com/science/article/pii/S0013795205000384}.
+
+
+\bibitem{McNelis2005}
+Paul D. McNelis
+\newblock Estimation of a Network with Evolutionary Computation
+\newblock \emph{Academic Press},
+  (11):\penalty0 59-84, 2005.
+\newblock ISBN 9780124859678,
+%\newblock \doi{http://dx.doi.org/10.1016/B978-012485967-8.50003-8}.
+\newblock URL
+  \url{http://www.sciencedirect.com/science/article/pii/B9780124859678500038}.
 
 
 
