@@ -59,13 +59,13 @@ Combinando redes neuronales y geoestad\'{i}stica para evaluaci\'{o}n de deslizam
 
 \selectlanguage{spanish}
 \begin{resumen}
-Esta contribución describe como se obtuvo un modelo de evaluación de deslizamiento de tierra para San Salvador, departamento de El Salvador. El análisis inicio con la obtención de una foto área del MARN () con un total de 939407 puntos georeferenciados con el fin de producir un inventario de deslizamiento. En esta evaluación de los deslizamientos se uso 4792 eventos previamente foto-interpretados y 7 factores condicionantes incluyendo: geomorfología, geología, precipitaciones máximas, aceleraciones sísmicas, pendiente del terreno, distancia a carretera y falla geológica. Redes Neuronales Artificiales(RNA) fueron usadas para la evaluación de la susceptibilidad a deslizamiento de tierra, logrando que más del 80\% de deslizamientos fueran apropiadamente clasificados usando un criterio dentro y fuera de la muestra con la que se estimaron los parámetros del modelo. Regresión Logística fue usada como base de comparación, obteniendo este modelo un rendimiento inferior que el de RNA con un porcentaje de correcta clasificación abajo del 70\%. Para completar el análisis se realizo la interpolación de puntos usando el método krigging proveniente del enfoque geoestadístico. Finalmente, los resultados muestran que es posible obtener un mapa de riesgo a deslizamiento de tierra, haciendo uso de una combinación de RNA y técnicas geoestadísticas con lo cual la presente investigación puede ayudar a la mitigación de deslizamientos de tierra en El Salvador.
+Esta contribución describe la creación de un modelo de evaluación de deslizamiento de tierra para San Salvador, departamento de El Salvador. El análisis inicio con la obtención de una foto área del MARN () con un total de 939407 puntos georeferenciados con el fin de producir un inventario de deslizamiento. En esta evaluación de los deslizamientos se uso 4792 eventos previamente foto-interpretados y 7 factores condicionantes incluyendo: geomorfología, geología, precipitaciones máximas, aceleraciones sísmicas, pendiente del terreno, distancia a carretera y falla geológica. Redes Neuronales Artificiales(RNA) fueron usadas para la evaluación de la susceptibilidad a deslizamiento de tierra, logrando que más del 80\% de deslizamientos fueran apropiadamente clasificados usando un criterio dentro y fuera de la muestra con la que se estimaron los parámetros del modelo. Regresión Logística fue usada como base de comparación, obteniendo este modelo un rendimiento inferior que el de RNA con un porcentaje de correcta clasificación abajo del 70\%. Para completar el análisis se realizo la interpolación de puntos usando el método krigging proveniente del enfoque geoestadístico. Finalmente, los resultados muestran que es posible obtener un mapa de riesgo a deslizamiento de tierra, haciendo uso de una combinación de RNA y técnicas geoestadísticas con lo cual la presente investigación puede ayudar a la mitigación de deslizamientos de tierra en El Salvador.
 \end{resumen}
 
 \PC deslizamiento de tierra, evaluación de riesgo, El Salvador, RNA, geoestadística.
 
 \begin{abstract}
-This contribution describes how we obtained a landslide hazard
+This contribution describes the creation of a landslide hazard
 assessment model for San Salvador, department in El Salvador. The analysis started with an aerial photointerpretation from  MARN (Ministry of Environment and Natural Resources of El Salvador)  with a total amount of 939407 georeferenced points to produce a landslide inventory. In this
 landslide assessment we have used 4792 events previously photo-interpretaded
 and 7 conditioning factors including: geomorphology, geology, rainfall intensity, peak ground accelaration, slope angle, road and fault distance. Artificial
@@ -199,6 +199,14 @@ p_{i} = \sum_{j=1}^{j^{*}} \lambda_{j} N_{j,i}
 In the context of the research problem $p_{i} $ and the number $ k^{*} $ represent 
 probability of landslide ocurrence and the number of input variables or causes associated with landslide ocurrence respectively.
 
+Before estimating the parameters of the neural network model, it is necessary standardize the input variables. In particular for classification problems is more suitable to scale inputs to $[-1,1]$ rather than $[0,1]$ (\cite{FAQANN}). The following scaling was applied to each input variable: 
+
+\begin{equation}
+x*_{k,i} = \frac{x_{k,i} - \mu }{\sigma}
+\end{equation}
+
+Where $ \mu $ and $\sigma$  is respectively the mean and the standard deviation for the ith input variable applied to the kth case.  
+
 The method used for estimating the parameters of the model was an Hybrid Method (\cite{McNelis2005}): Firstly heuristic genetic algorithm using a package developed in the R statistical software specifically developed for this purpose, was used to obtain 
 a good estimation of the parameters of the model. 
 
@@ -247,6 +255,9 @@ Kriging minimizes the mean squared error of prediction
 \begin{equation}
 min \ \sigma_{e}^{2} = E\left[Z(s_{0}) - \hat{Z(s_{0})}\right]^{2}
 \end{equation}  
+
+In order to make spatial predictions using ordinary kriging, an R script was developed which can be accessed in the following web address: 
+
 
 
 \section{Results}
@@ -327,7 +338,21 @@ logistic regression  &  0.6710  & 0.6748   & 0.663 \\
 \end{table}
  
 To generate the map of landslide hazards, the following steps were followed based on geostatistics methodology: Exploratory analysis, Variogram modelling and Spatial prediction using ordinary kriging and validation of this results. 
-First of all one thousand data were used for the map generation process leaving the others for validation of the model. The Exploratory analysis showed the presence of spatial correlation in the data, this was done making scatter plot of pairs $Z(s_{i})$ and  $Z(s_{j})$, grouped according to their separation distance, also the data did not show the presence of anisotropic effect. As regards the estimation of the variogram, the spherical, gaussian and exponential models were fitted but the validation of these models on data that were not taken into account in the process of estimating the variogram showed that the best model was the exponential, since that it presented a $ R^{2} = 0.42 $ against $ R^{2} = 0.40 $ and $ R^{2} = 0.39 $ of the models spherical and gaussian respectively. The map of landslide hazards is showed in the figure \ref{fig:img02}.
+
+In order to achieve the above steps a R scrit was developed which can be downloaded in the following address:
+
+ 
+
+First of all one thousand fifty georeferenced point with their probability of ocurrence which was calculated using neural network, were selected randomly for the map generation process leaving the others for validation of the model. The Exploratory analysis showed the presence of spatial correlation in the data, this was done making scatter plot of pairs $Z(s_{i})$ and  $Z(s_{j})$, grouped according to their separation distance, also the data did not show the presence of anisotropic effect. 
+
+As regards the estimation of the variogram, the spherical, gaussian and exponential models were fitted but the validation of these models on data that were not taken into account in the process of estimating the variogram showed that the best model was the exponential, since that it showed a $ R^{2} = 0.42 $ against $ R^{2} = 0.40 $ and $ R^{2} = 0.39 $ of the models spherical and gaussian respectively. With the exponential model were made spatial predictions on a grid of 1500 $\times$ 1500 and after that, the spatial predictions were imported to Geotiff raster format. 
+
+% Falta poner que despues de pasarlo al geotiff se utilizo el software 
+% ILWIS o el que se tuvo que usar y que posteriormente se genero el 
+% map of landslide hazard mostrado en la figura  
+
+
+The map of landslide hazards is showed in the figure \ref{fig:img02}.
 
  \begin{center}
   \begin{figure}[H]
@@ -494,6 +519,13 @@ Paul D. McNelis
 \newblock URL
   \url{http://www.sciencedirect.com/science/article/pii/B9780124859678500038}.
 
+
+
+\bibitem{FAQANN}
+Warren S. Sarle
+\newblock URL
+  \url{ftp://ftp.sas.com/pub/neural/FAQ.html#questions}.
+  \newblock Accessed 31 May, 2015
 
 
 \end{thebibliography}
