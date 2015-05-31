@@ -1,0 +1,9 @@
+Package: neurogen
+Type: Package
+Title: Redes Neuronales con algoritmos geneticos
+Version: 1.0
+Date: 2007-01-02
+Author: Ricardo Salvador Rios Marquez 
+Maintainer: Ricardo Rios <ricrio@gmail.com>
+Description: Redes Neuronales con algoritmos geneticos para problemas de clasificacion.
+License: GPL 

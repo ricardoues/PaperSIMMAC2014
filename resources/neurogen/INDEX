@@ -1,0 +1,5 @@
+cancer                  Datos de Cancer
+classnetfun             Funcion utilitaria que da el error y la salida de la red neuronal
+classnet                Red Neuronal Probabilistica con algoritmos geneticos
+gen                     Algoritmo Genetico
+predictclassnet         Prediccion de nuevas observaciones

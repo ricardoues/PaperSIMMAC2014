@@ -1,0 +1,2 @@
+#useDynLib(neurogen) # done in .onLoad 
+export(classnetfun,classnet,gen,predictclassnet)
