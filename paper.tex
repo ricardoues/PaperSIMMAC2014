@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc} % En caso de usar tildes, ñ y otros caracteres especiales
 
 
+
 \pagestyle{fancy}
 \fancyhead{}
 \fancyhead[RE]{\thepage \hfill {\sc a. rib\'{o} -- g. molina -- r. r\'{i}os  }}
@@ -59,7 +60,7 @@ Combinando redes neuronales y geoestad\'{i}stica para evaluaci\'{o}n de deslizam
 
 \selectlanguage{spanish}
 \begin{resumen}
-Esta contribución describe la creación de un modelo de evaluación de deslizamiento de tierra para San Salvador, departamento de El Salvador. El análisis inicio con la obtención de una foto área del MARN () con un total de 939407 puntos georeferenciados con el fin de producir un inventario de deslizamiento. En esta evaluación de los deslizamientos se uso 4792 eventos previamente foto-interpretados y 7 factores condicionantes incluyendo: geomorfología, geología, precipitaciones máximas, aceleraciones sísmicas, pendiente del terreno, distancia a carretera y falla geológica. Redes Neuronales Artificiales(RNA) fueron usadas para la evaluación de la susceptibilidad a deslizamiento de tierra, logrando que más del 80\% de deslizamientos fueran apropiadamente clasificados usando un criterio dentro y fuera de la muestra con la que se estimaron los parámetros del modelo. Regresión Logística fue usada como base de comparación, obteniendo este modelo un rendimiento inferior que el de RNA con un porcentaje de correcta clasificación abajo del 70\%. Para completar el análisis se realizo la interpolación de puntos usando el método krigging proveniente del enfoque geoestadístico. Finalmente, los resultados muestran que es posible obtener un mapa de riesgo a deslizamiento de tierra, haciendo uso de una combinación de RNA y técnicas geoestadísticas con lo cual la presente investigación puede ayudar a la mitigación de deslizamientos de tierra en El Salvador.
+Esta contribución describe la creación de un modelo de evaluación de deslizamiento de tierra para San Salvador, departamento de El Salvador. El análisis inicio con la obtención de una foto área del MARN (Ministerio de Medio Ambiente y Recursos Naturales) con un total de 939407 puntos georeferenciados con el fin de producir un inventario de deslizamiento. En esta evaluación de los deslizamientos se uso 4792 eventos previamente foto-interpretados y 7 factores condicionantes incluyendo: geomorfología, geología, precipitaciones máximas, aceleraciones sísmicas, pendiente del terreno, distancia a carretera y falla geológica. Redes Neuronales Artificiales(RNA) fueron usadas para la evaluación de la susceptibilidad a deslizamiento de tierra, logrando que más del 80\% de deslizamientos fueran apropiadamente clasificados usando un criterio dentro y fuera de la muestra con la que se estimaron los parámetros del modelo. Regresión Logística fue usada como base de comparación, obteniendo este modelo un rendimiento inferior que el de RNA con un porcentaje de correcta clasificación abajo del 70\%. Para completar el análisis se realizo la interpolación de puntos usando el método krigging proveniente del enfoque geoestadístico. Finalmente, los resultados muestran que es posible obtener un mapa de riesgo a deslizamiento de tierra, haciendo uso de una combinación de RNA y técnicas geoestadísticas con lo cual la presente investigación puede ayudar a la mitigación de deslizamientos de tierra en El Salvador.
 \end{resumen}
 
 \PC deslizamiento de tierra, evaluación de riesgo, El Salvador, RNA, geoestadística.
@@ -119,14 +120,11 @@ In this paper we propose an ANN model which enable to estimate the susceptibilit
 \label{sec:brief}
 Since the pioneering work (\cite{Carrara1983403}), several mathematics and statistics models have been proposed to model landslide susceptibility: deterministic models (\cite{hessd-10-12643-2013},  \cite{doi:10.1080/19475705.2010.498151} and \cite{Neu2012511}), probabilistic models (\cite{Bern198839}, \cite{Chung2003451} and \cite{doi:10.1080/01431160310001618734} ). 
 
-According to 
+It has been used popular classification models such as logistic regression (\cite{akgun2012} and \cite{gaskill} ) , neural networks (\cite{Melchiorre2011410},\cite{Zeng2001374}, \cite{Ermini2005327}) and \cite{Yesilnacar2005251} and support vector machine (\cite{ballabio2012support} and \cite{tien2012landslide}). 
 
 
-Recently 
-%, fuzzy set theory (\citet{Kanungo2006347} and \citet{Guettouche20133163}) 
-and neural networks (\cite{Melchiorre2011410},\cite{Zeng2001374}, \cite{Ermini2005327}) and \cite{Yesilnacar2005251}.
-
-
+According to (\cite{van2006landslide}) the magnitude of a possible
+slide is difficult to foresee as it depends on the magnitude of the triggering event and the environmental conditions (e.g., height of water table) at the moment of the event. Because of these complex relationships between the dependent variable and causal factors, and since that neural networks are particularly useful for applications where the complexity of the data detect complex nonlinear relationships, that is why this kind of model was chosen, despite the disadvantages such as greater computational burden and proneness to overfitting.  
 
 
 
@@ -215,7 +213,7 @@ The R package can be accessed from the following web address:
 \url{https://goo.gl/PHaaG2}
 
 
-Once a good estimate was obtained, this was occupied as the initial values for the conjugate gradient method implemented in the optim funcion of the R statistical software, to obtain a better estimation of the parameters of the model.  
+Once a good estimate was obtained, this was occupied as the initial values for the conjugate gradient method implemented in the optim function of the R statistical software, to obtain a better estimation of the parameters of the model.  
 
 
 \section{Spatial Prediction}
@@ -350,7 +348,7 @@ As regards the estimation of the variogram, the spherical, gaussian and exponent
 % Falta poner que despues de pasarlo al geotiff se utilizo el software 
 % ILWIS o el que se tuvo que usar y que posteriormente se genero el 
 % map of landslide hazard mostrado en la figura  
-
+% valorizar si se pone el codigo fuente 
 
 The map of landslide hazards is showed in the figure \ref{fig:img02}.
 
@@ -370,6 +368,12 @@ A landslide hazard assessment study was carried out in Metropolitan Area of San 
 In the process of estimating the weights of the model an heuristic technique was used to obtain a better solution after that a local search was used. It is better than use only backpropagation algorithm or another local search method to estimate weights since that when these are used there is a strong danger of getting stuck in a local minimum rather than a global minimum for a vector of weights.
 
 The problem with the neural network approach is that is difficult to estimate the weights of the model due to intensive computation involved in the present study the estimation of a neural network model takes between 4 and 10 hours for this reason we could not assess the statistical significance of the input variables in the neural network processes using boostrapping. For all of the above parallel computing must be used rather than serial computing in estimating weights of neural networks models.
+
+
+%%%%  Mencionar abajo las limitaciones computacionales y 
+%%%% que no se pudo tomar una muestra mas grande que 1500 
+%%%% para el kriging relacionar con lo del big data que puede ser 
+%%%% linea de investigación 
 
 The results obtained in the geostatistics methodology showed that the spatial the data satisfies the conditions for applying krigin method. The map of landslide hazard \ref{fig:img02} was generated by krigin method and can be used by non-experts in the landslide phenomenon for many purposes such as territorial planning, prevention and mitigation of natural dissasters and so on. 
 
@@ -525,7 +529,53 @@ Paul D. McNelis
 Warren S. Sarle
 \newblock URL
   \url{ftp://ftp.sas.com/pub/neural/FAQ.html#questions}.
-  \newblock Accessed 31 May, 2015
+  \newblock Accessed 31 May, 2015.
+
+
+\bibitem{ballabio2012support}
+Ballabio, Cristiano and Sterlacchini, Simone
+\newblock Support vector machines for landslide susceptibility mapping: the Staffora River Basin case study, Italy
+\newblock \emph{Mathematical geosciences},
+  (11):\penalty0 1, 47--70, 2012.
+\newblock Springer. 
+
+
+
+\bibitem{tien2012landslide}
+Tien Bui, Dieu and Pradhan, Biswajeet and Lofman, Owe and Revhaug, Inge
+\newblock Landslide susceptibility assessment in vietnam using support vector machines, decision tree, and Naive Bayes Models
+\newblock \emph{Mathematical Problems in Engineering},
+  (11):\penalty0 2012, 2012.
+\newblock Hindawi Publishing Corporation.
+
+
+
+\bibitem{akgun2012}
+Akgun, Aykut
+\newblock A comparison of landslide susceptibility maps produced by logistic regression, multi criteria decision, and likelihood ratio methods: a case study at Izmir, Turkey
+\newblock \emph{Landslides},
+  (11):\penalty0 9, 1, 93--106, 2012
+\newblock Springer. 
+
+
+\bibitem{gaskill}
+Gaskill, Jacob and Zuber, Brian and Nordman, Erik
+\newblock Analyzing Landslide Susceptibility in St. Vincent and the Grenadines Using Co-Kriging and Logistic Regression
+\newblock \emph{The 2015 IMAGIN Award, Michigan United States}.
+\newblock URL
+  \url{http://www.imagin.org/awards/sppc/2015/papers/jacob_gaskill_paper.pdf}.
+
+
+\bibitem{van2006landslide}
+Van Westen, CJ and Van Asch, Th WJ and Soeters, R
+\newblock Landslide hazard and risk zonation why is it still so difficult?
+\newblock \emph{Bulletin of Engineering geology and the Environment}.
+(65):\penalty0 2, 167--184, 2006
+\newblock Springer. 
+
+
+
+
 
 
 \end{thebibliography}
