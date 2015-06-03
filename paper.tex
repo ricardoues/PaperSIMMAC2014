@@ -61,7 +61,7 @@ Combinando redes neuronales y geoestad\'{i}stica para evaluaci\'{o}n de deslizam
 
 \selectlanguage{spanish}
 \begin{resumen}
-Esta contribución describe la creaci\'{o}n de un modelo de evaluaci\'{o}n de deslizamiento de tierra para San Salvador, departamento de El Salvador. El an\'{a}lisis inicio con la obtenci\'{o}n de una foto \'{a}rea del MARN (Ministerio de Medio Ambiente y Recursos Naturales) con un total de 939407 puntos georeferenciados con el fin de producir un inventario de deslizamiento. En esta evaluaci\'{o}n de los deslizamientos se uso 4792 eventos previamente foto-interpretados y 7 factores condicionantes incluyendo: geomorfolog\'{i}a, geolog\'{i}a, precipitaciones m\'{a}ximas, aceleraciones s\'{i}smicas, pendiente del terreno, distancia a carretera y falla geol\'{o}gica. Redes Neuronales Artificiales(RNA) fueron usadas para la evaluaci\'{o}n de la susceptibilidad a deslizamiento de tierra, logrando que m\'{a}s del 80\% de deslizamientos fueran apropiadamente clasificados usando un criterio dentro y fuera de la muestra con la que se estimaron los parámetros del modelo. Regresi\'{o}n Log\'{i}stica fue usada como base de comparaci\'{o}n, obteniendo este modelo un rendimiento inferior que el de RNA con un porcentaje de correcta clasificaci\'{o}n abajo del 70\%. Para completar el an\'{a}lisis se realizo la interpolaci\'{o}n de puntos usando el m\'{e}todo krigging proveniente del enfoque geoestad\'{i}stico. Finalmente, los resultados muestran que es posible obtener un mapa de riesgo a deslizamiento de tierra, haciendo uso de una combinación de RNA y t\'{e}cnicas geoestad\'{i}sticas con lo cual la presente investigaci\'{o}n puede ayudar a la mitigaci\'{o}n de deslizamientos de tierra en El Salvador.
+Esta contribución describe la creaci\'{o}n de un modelo de evaluaci\'{o}n de deslizamiento de tierra para San Salvador, departamento de El Salvador. El an\'{a}lisis inicio con la obtenci\'{o}n de una foto \'{a}rea del MARN (Ministerio de Medio Ambiente y Recursos Naturales) con un total de 939407 puntos georeferenciados con el fin de producir un inventario de deslizamiento. En esta evaluaci\'{o}n de los deslizamientos se uso 4792 eventos previamente foto-interpretados y 7 factores condicionantes incluyendo: geomorfolog\'{i}a, geolog\'{i}a, precipitaciones m\'{a}ximas, aceleraciones s\'{i}smicas, pendiente del terreno, distancia a carretera y falla geol\'{o}gica. Redes Neuronales Artificiales (RNA) fueron usadas para la evaluaci\'{o}n de la susceptibilidad a deslizamiento de tierra, logrando que m\'{a}s del 80\% de deslizamientos fueran apropiadamente clasificados usando un criterio dentro y fuera de la muestra con la que se estimaron los parámetros del modelo. Regresi\'{o}n Log\'{i}stica fue usada como base de comparaci\'{o}n, obteniendo este modelo un rendimiento inferior que el de RNA con un porcentaje de correcta clasificaci\'{o}n abajo del 70\%. Para completar el an\'{a}lisis se realizo la interpolaci\'{o}n de puntos usando el m\'{e}todo krigging proveniente del enfoque geoestad\'{i}stico. Finalmente, los resultados muestran que es posible obtener un mapa de riesgo a deslizamiento de tierra, haciendo uso de una combinación de RNA y t\'{e}cnicas geoestad\'{i}sticas con lo cual la presente investigaci\'{o}n puede ayudar a la mitigaci\'{o}n de deslizamientos de tierra en El Salvador.
 \end{resumen}
 
 \PC deslizamiento de tierra, evaluación de riesgo, El Salvador, RNA, geoestadística.
@@ -70,8 +70,7 @@ Esta contribución describe la creaci\'{o}n de un modelo de evaluaci\'{o}n de de
 This contribution describes the creation of a landslide hazard
 assessment model for San Salvador, department in El Salvador. The analysis started with an aerial photointerpretation from  MARN (Ministry of Environment and Natural Resources of El Salvador)  with a total amount of 939407 georeferenced points to produce a landslide inventory. In this
 landslide assessment we have used 4792 events previously photo-interpretaded
-and 7 conditioning factors including: geomorphology, geology, rainfall intensity, peak ground accelaration, slope angle, road and fault distance. Artificial
-Neural Networks (ANNs) were applied for the assessment of susceptibility to
+and 7 conditioning factors including: geomorphology, geology, rainfall intensity, peak ground accelaration, slope angle, road and fault distance. Artificial Neural Networks (ANN) were applied for the assessment of susceptibility to
 landslides, achieving more than 80\% of landslide were properly classified using
 in-sample and out of sample criteria. Logistic regression was used as base of
 comparison, obtaining this model a performance lower than ANNs with a percentage of correct classification under 70\%. To complete the analysis we have
@@ -89,31 +88,25 @@ wherewith the present study can help landslide mitigation in El Salvador.
 
 \section{Introduction}
 \label{sec:intr}
-El Salvador, one of the smallest and most crowded nations in Central America, extends about 240 kilometers westward from the 
-Gulf of Fonseca to the border with Guatemala. This country is very vulnerable to landslide due to social, political and economic factors.
-In the year of 2001, El Salvador was struck by two devastating earthquakes within a month. One of the most spectacular aspects featuring 
-heavily in the first earthquake was the damage inflicted by landslides. Among them, Las Colinas landslide was the most tragic.
-A huge amount of soil mass (about 200,000 $m^{3}$) was thrown off the rim of a mountain ridge rising south behind Las Colinas area 
-of Nueva San Salvador (Santa Tecla), and flushed many houses and therefore more than 500 lives to death.
+El Salvador, one of the smallest and most crowded nations in Central America, extends in Pacific coast about 240 kilometers westward from the Gulf of Fonseca to the border with Guatemala. El Salvador borders an active subduction boundary between Cocos and Caribbean plates located 30 km offshore. Therefore El Salvador is affected with high seismicity and volcanic activity related to this active boundary. There is two main sources of seismic activity, the upper interface thrust that coincides with the location of the recent volcanoes and the Benioff-Wadaty zones of subducted Cocos plate where deeper intraplate earthquakes occurs (\cite{dewey}). Due this tectonic and volcanic activity El Salvador has rugged relief. The main ranges cross the country with a rough west-east trend, parallel to the coast, these are separated from each other by faults and grabens. These ranges present several highly active volcanoes. The surface geology in El Salvador is almost entirely volcanic, dominated by upper Tertiary to Holocene volcanic rocks, only sparse outcrops of sedimentary and plutonic crops are located in the northern ranges, in the border with Honduras (\cite{weber}). Some of the most recent volcanic layers are formed by poor consolidated ashes and tuffs highly erodible (\cite{bommer}).
 
-Due to the above it is necessary to implement mechanisms that allow us to quantify the hazard of a given
-geographic area to landslides, usually this is done with development of susceptibility maps which present in a graphical way
-the zones more susceptible to landslides and represent a practical tool for urban planning.
+Throughout the year the country experiences a tropical climate with two seasons, a dry season (November to April) and wet season (May - October). The climate of El Salvador is generally warm. In the dry season there is very less rainfall but during rainy seasons heavy showers take place. El Salvador's interior regions remain dry throughout the year. Periodically El Salvador is affected by tropical storms and occasionally by hurricanes.
 
-%% write about how to perform your neural network and geostatistic analysis
+Like in other parts of Central America, landslides in El Salvador constitute an important natural hazard due to prevailing steep terrain covered with poor consolidated volcanic materials and the frequent occurrence of extreme precipitation events and intense earthquakes. This problem is exacerbated by the extreme deforestation and the consequent high level of rates of erosion. Poverty, overpopulation and uncontrolled urbanization that characterizes the Salvadoran human settlements converts El Salvador in a country with high landslide risks.
+One example of this high risk is the devastating effect of the Las Colinas landslide triggered by a major earthquake (Mw 7.6) occurred on January of the 13, 2001  in Santa Tecla, a major city located close to San Salvador  the Salvadoran capital (\cite{evans}). A huge amount of soil mass (about 200,000 m3) was thrown off the rim of El Balsamo range and flushed many houses and produced more than 500 deaths. Together with this event this earthquake triggered several landslides along the country, especially in the Metropolitan Area of San Salvador (MASS) (\cite{jibson}). Other example is the large number of heavy-rainfall induced landslides occurred during Hurricane Mitch on October and November 1998 (\cite{crone}).   
 
-%The data was collected from aerial images, topographical and geologic maps which provide a base for  the application of landslide susceptibility methodologies and the development of geostatistics models. From aerial photographs, different regions of landslide occurrences were classified. The topographical and geologic maps provided information about causal factors. 
-%
-%
-%Artificial neural networks (ANNs) are computational models inspired by biology (in particular the brain) that are capable of machine learning and pattern recognition. They are usually presented as systems of interconnected ``neurons'' that can compute values from inputs by feeding information through the network (\citet{wiki:001}). Recently ANNs have been applied successfully to the assessment of landslide susceptibility. 
-%
-In this paper we propose an ANN model which enable to estimate the susceptibility to landslide in the georeferenced points belong to the Metropolitan Area of San Salvador (MASS) and later a map of susceptibility was generated by means of kriging method from geostatistical. 
+Due to the above it is necessary to implement mechanisms that allow us to quantify the hazard of a given geographic area to landslides, usually this is done with development of susceptibility maps which present in a graphical way the zones more susceptible to landslides and represent a practical tool for urban planning. It was proposed an Artificial Neural Network model (ANN) which are a family of statistical learning models inspired by biological neural networks. The model proposed is used to estimate the susceptibility to landslide. From the results obtained by the model, a map was derived using kriging which is a method of interpolation spatial from the geostatistical approach. 
 
 
+ \begin{center}
+  \begin{figure}[H]
+   \centering
+   \includegraphics[scale=0.80]{MASS_mapa_1}
+   \caption{\small{Maps from El Salvador}}
+   \label{fig:mass01}
+  \end{figure}
+ \end{center}
 
-%\citet{Melchiorre2011410} determined landslide susceptibility for the Guantanamo Province %in Cuba by using ANN models. 
-
-%%% I must citet the paper of Enrique Castellanos 
 
 
 
@@ -393,6 +386,49 @@ The authors are indebted to M.SC. Giovanni Molina from MARN who provided the dat
 \begin{thebibliography}{99}
 
 
+\bibitem{bommer}
+Bommer J.J., Rodriguez C.E.
+\newblock Earthquake-induced landslides in Central Am\'{e}rica
+\newblock \emph{Engineering Geology}.
+(63):\penalty0 1889-220, 2002
+
+
+\bibitem{crone}
+Crone A.J., Baum R.L., Lidke D.J., Sather D.N.D., Bradley L.-A., Tarr A.C.
+\newblock Landslides Induced by Hurricane Mitch in El Salvador-An Inventory and Description of Selected Features
+\newblock \emph{USGS Open File Repord 01-444. (2002)}
+
+
+\bibitem{dewey}
+Dewey J.W. White R.A., Hern\'{a}ndez D.A.
+\newblock Seismicity and tectonics of El Salvador
+\newblock \emph{Chapter 27 in Geological Society of America Special paper 375 in Natural Hazards in El Salvador of Rose W.I., Bommer J.J., L\'{o}pez D.L., Carr M.J. and Major J.J. 367-378. (2004)}
+
+
+\bibitem{evans}
+Evans S.G. Bent A.L.
+\newblock Las Colinas landslide, Santa Tecla:  A higly destructive flowslide triggered by January 13, 2001, El Salvador earthquake.
+\newblock \emph{Chapter 3 in Geological Society of America Special paper 375 in Natural Hazards in El Salvador of Rose W.I., Bommer J.J., L\'{o}pez D.L., Carr M.J. and Major J.J. 25-37. (2004)}
+
+
+\bibitem{jibson}
+Jibson R.W., Crone A.J., Harp E.L., Baum R.L., Major J.J., Pullinguer C.R., Escobar D., Martinez M., Smith M.E. 
+\newblock Landslides triggered by the 13 January and 13 February 2001, earthquakes.
+\newblock \emph{ Chapter 6 in Geological Society of America Special paper 375 in Natural Hazards in El Salvador of Rose W.I., Bommer J.J., L\'{o}pez D.L., Carr M.J. and Major J.J. 69-88. (2004)}
+
+
+\bibitem{weber}
+Weber H.S., Wiesemann G., Lorenz  W., Scmith-Thorn\'{e} M.
+\newblock Mapa geol\'{o}gico de Republica de El Salvador
+\newblock escala 1 : 100 000 (6 sheets).
+\newblock \emph{ Bundesanstalt f\"ur Geowissenschaften und Rohstoffe, Hannover, Germany. }
+
+
+
+
+
+
+
 %\bibitem[Carrara(1983)]{Carrara1983403}
 \bibitem{Carrara1983403}
 Alberto Carrara.
@@ -573,6 +609,13 @@ Van Westen, CJ and Van Asch, Th WJ and Soeters, R
 \newblock \emph{Bulletin of Engineering geology and the Environment}.
 (65):\penalty0 2, 167--184, 2006
 \newblock Springer. 
+
+
+
+
+
+
+
 
 
 
