@@ -61,7 +61,7 @@ Combinando redes neuronales y geoestad\'{i}stica para evaluaci\'{o}n de deslizam
 
 \selectlanguage{spanish}
 \begin{resumen}
-Esta contribuci\'{o}n describe la creaci\'{o}n de un modelo de evaluaci\'{o}n de deslizamiento de tierra para el \'{A}rea Metropolitana de San Salvador, departamento de El Salvador. El an\'{a}lisis inicio con la obtenci\'{o}n de una foto \'{a}rea del MARN (Ministerio de Medio Ambiente y Recursos Naturales) en donde 4792 deslizamientos fueron identificados y georeferenciados junto con 7 factores condicionantes incluyendo: geomorfolog\'{i}a, geolog\'{i}a, precipitaciones m\'{a}ximas, aceleraciones s\'{i}smicas, pendiente del terreno, distancia a carretera y falla geol\'{o}gica. Redes Neuronales Artificiales (RNA) fueron usadas para la evaluaci\'{o}n de la susceptibilidad a deslizamiento de tierra, logrando que m\'{a}s del 80\% de deslizamientos fueran apropiadamente clasificados usando un criterio dentro y fuera de la muestra con la que se estimaron los par\'{a}metros del modelo. Regresi\'{o}n Log\'{i}stica fue usada como base de comparaci\'{o}n, obteniendo este modelo un rendimiento inferior que el de RNA con un porcentaje de correcta clasificaci\'{o}n abajo del 70\%. Para completar el an\'{a}lisis se realizo la interpolaci\'{o}n de puntos usando el m\'{e}todo kriging proveniente del enfoque geoestad\'{i}stico. Finalmente, los resultados muestran que es posible obtener un mapa de riesgo a deslizamiento de tierra, haciendo uso de una combinaci\'{o}n de RNA y t\'{e}cnicas geoestad\'{i}sticas con lo cual la presente investigaci\'{o}n puede ayudar a la mitigaci\'{o}n de deslizamientos de tierra en El Salvador.
+Esta contribuci\'{o}n describe la creaci\'{o}n de un modelo de evaluaci\'{o}n de deslizamiento de tierra para el \'{A}rea Metropolitana de San Salvador, departamento de El Salvador. El an\'{a}lisis inicio con la obtenci\'{o}n de una foto \'{a}rea del MARN (Ministerio de Medio Ambiente y Recursos Naturales) en donde 4792 deslizamientos fueron identificados y georeferenciados junto con 7 factores condicionantes incluyendo: geomorfolog\'{i}a, geolog\'{i}a, precipitaciones m\'{a}ximas, aceleraciones s\'{i}smicas, pendiente del terreno, distancia a carretera y falla geol\'{o}gica. Redes Neuronales Artificiales (RNA) fueron utilizadas para la evaluaci\'{o}n de la susceptibilidad a deslizamiento de tierra, logrando que m\'{a}s del 80\% de deslizamientos fueran apropiadamente clasificados usando un criterio dentro y fuera de la muestra con la que se estimaron los par\'{a}metros del modelo. Regresi\'{o}n Log\'{i}stica fue usada como base de comparaci\'{o}n, obteniendo este modelo un rendimiento inferior. Para completar el an\'{a}lisis se realizo la interpolaci\'{o}n de puntos usando el m\'{e}todo kriging proveniente del enfoque geoestad\'{i}stico. Finalmente, los resultados muestran que es posible obtener un mapa de riesgo a deslizamiento de tierra, haciendo uso de una combinaci\'{o}n de RNA y t\'{e}cnicas geoestad\'{i}sticas con lo cual la presente investigaci\'{o}n puede ayudar a la mitigaci\'{o}n de deslizamientos de tierra en El Salvador.
 \end{resumen}
 
 \PC deslizamiento de tierra, evaluaci\'{o}n de riesgo, El Salvador, RNA, geoestad\'{i}stica.
@@ -69,10 +69,10 @@ Esta contribuci\'{o}n describe la creaci\'{o}n de un modelo de evaluaci\'{o}n de
 \begin{abstract}
 This contribution describes the creation of a landslide hazard
 assessment model for San Salvador, department in El Salvador. The analysis started with an aerial photointerpretation from Ministry of Environment and Natural Resources of El Salvador (MARN Spanish acronym) where 4792 landslides were identified and georeferenced 
-along with 7 conditioning factors including: geomorphology, geology, rainfall intensity, peak ground acceleration, slope angle, road and fault distance. Artificial Neural Networks (ANN) were applied for the assessment of susceptibility to
-landslides, achieving more than 80\% of landslide were properly classified using
+along with 7 conditioning factors including: geomorphology, geology, rainfall intensity, peak ground acceleration, slope angle, road, and fault distance. Artificial Neural Networks (ANN) were for utilized to assess the susceptibility to
+landslides, achieving results where more than 80\% of landslide were properly classified using
 in-sample and out of sample criteria. Logistic regression was used as base of
-comparison, obtaining this model a performance lower than ANNs with a percentage of correct classification under 70\%. To complete the analysis we have
+comparison. Logistic regression obtained a performance lower. To complete the analysis we have
 performed interpolation of the points using kriging method from geostatistical
 approach. Finally, the results show that is possible to derive a landslide hazard map, making use of a combination of ANNs and geostatistical techniques
 wherewith the present study can help landslide mitigation in El Salvador.
@@ -87,13 +87,13 @@ wherewith the present study can help landslide mitigation in El Salvador.
 
 \section{Introduction}
 \label{sec:intr}
-El Salvador, one of the smallest and most crowded nations in Central America, extends in Pacific coast about 240 km westward from the Gulf of Fonseca to the border with Guatemala (see Fig. \ref{fig:mass01}). El Salvador borders an active subduction boundary between Cocos and Caribbean plates located 30 km offshore. Therefore El Salvador is affected with high seismicity and volcanic activity related to this active boundary. There is two main sources of seismic activity, the upper interface thrust that coincides with the location of the recent volcanoes and the Benioff-Wadaty zones of subducted Cocos plate where deeper intraplate earthquakes occurs \cite{dewey}. Due this tectonic and volcanic activity El Salvador has rugged relief. The main ranges cross the country with a rough west-east trend, parallel to the coast, these are separated from each other by faults and grabens. These ranges present several highly active volcanoes. The surface geology in El Salvador is almost entirely volcanic, dominated by upper Tertiary to Holocene volcanic rocks, only sparse outcrops of sedimentary and plutonic rocks are located in the northern ranges, in the border with Honduras \cite{weber}. Some of the most recent volcanic layers are formed by poor consolidated ashes and tuffs highly erodible \cite{bommer}.
+El Salvador, one of the smallest and most crowded nations in Central America, extends in Pacific coast about 240 km westward from the Gulf of Fonseca to the border with Guatemala (see Fig. \ref{fig:mass01}). El Salvador borders an active subduction boundary between Cocos and Caribbean plates located 30 km offshore. Therefore El Salvador is affected with high seismicity and volcanic activity related to this active boundary. There are two main sources of seismic activity: the upper interface thrust that coincides with the location of the recent volcanoes and the Benioff-Wadaty zones of subducted Cocos plate where deeper intraplate earthquakes occurs \cite{dewey}. Due this tectonic and volcanic activity El Salvador has rugged relief. The main ranges cross the country with a rough west-east trend, parallel to the coastline. These are separated from each other by faults and grabens. These ranges present several highly active volcanoes. The surface geology in El Salvador is almost entirely volcanic, dominated by upper Tertiary to Holocene volcanic rocks. Only sparse outcrops of sedimentary and plutonic rocks are located in the northern ranges, in the border with Honduras \cite{weber}. Some of the most recent volcanic layers are formed by poorly consolidated ashes and highly erodible tuffs \cite{bommer}.
 
-Throughout the year the country experiences a tropical climate with two seasons, a dry season (November to April) and wet season (May - October). The climate of El Salvador is generally warm. In the dry season there is very less rainfall but during rainy seasons heavy showers take place. Periodically El Salvador is affected by tropical storms and occasionally by hurricanes.
+Throughout the year the country experiences a tropical climate with two seasons, a dry season (November to April) and wet seasons (May - October). The climate of El Salvador is generally warm. In the dry season there is very little rainfall but during rainy seasons heavy showers take place. Periodically El Salvador is affected by tropical storms and occasionally by hurricanes.
 
-As in other parts of Central America, landslides in El Salvador constitute an important natural hazard due to prevailing steep terrain covered with poor consolidated volcanic materials and the frequent occurrence of extreme precipitation events and intense earthquakes. This problem is exacerbated by the extreme deforestation and the consequent high level of rates of erosion. Poverty, overpopulation and uncontrolled urbanization characterize to the Salvadoran human settlements, which makes to El Salvador a country with high landslide risks. An example of this high risk was the devastating effect is Las Colinas landslides,  triggered by a major earthquake (Mw 7.6) on January 13th, 2001 in Santa Tecla, a major city located close to San Salvador the Salvadoran capital\cite{evans}. A huge amount of soil mass (about 200,000 $m^{3}$) was thrown off the rim of El Balsamo range and flushed many houses and produced more than 500 deaths. Together with this event also several landslides ocurred along the country, especially in the Metropolitan Area of San Salvador (MASS) \cite{jibson}. Another example is the large number of heavy-rainfall induced landslides occurred during Hurricane Mitch on October and November 1998 \cite{crone}.   
+As in other parts of Central America, landslides in El Salvador constitute an important natural hazard due to prevailing steep terrain covered with poorly consolidated volcanic materials and the frequent occurrence of extreme precipitation events and intense earthquakes. This problem is exacerbated by the extreme deforestation and the consequent high level of rates of erosion. Poverty, overpopulation and uncontrolled urbanization characterize the Salvadoran human settlements, which makes El Salvador a country with high landslide risks. An example of this high risk was the devastating effect of Las Colinas landslides,  triggered by a major earthquake (Mw 7.6) on January 13th, 2001 in Santa Tecla, a major city located close to San Salvador the Salvadoran capital\cite{evans}. A huge amount of soil mass (about 200,000 $m^{3}$) was thrown off the rim of El Balsamo range and flushed many houses and produced more than 500 deaths. Together with this event also several landslides ocurred along the country, especially in the Metropolitan Area of San Salvador (MASS) \cite{jibson}. Another example is the large number of heavy-rainfall induced landslides occurred during Hurricane Mitch on October and November 1998 \cite{crone}.   
 
-Due to the above it is necessary to implement mechanisms that allow us to quantify the hazard of a given geographic area to landslides, usually this is done with development of susceptibility maps which present in a graphical way the zones more susceptible to landslides and represent a practical tool for urban planning. It was proposed an Artificial Neural Network model (ANN) which is a family of statistical learning models inspired by biological neural networks. The model proposed is used to estimate the susceptibility to landslide. From the results obtained by the model, a map was derived using kriging which is a method of interpolation spatial from the geostatistical approach. 
+Due to the above, it is necessary to implement mechanisms that allow us to quantify the hazard of a given geographic area to landslides. Usually this is done with development of susceptibility maps which present in a graphical way the zones more susceptible to landslides and represent a practical tool for urban planning. We propose an Artificial Neural Network model (ANN), which is a family of statistical learning models inspired by biological neural networks. The model proposed is used to estimate the susceptibility to landslide. From the results obtained by the model, a map was derived using kriging which is a method of interpolation spatial from the geostatistical approach. 
 
 
  \begin{center}
@@ -110,43 +110,43 @@ Due to the above it is necessary to implement mechanisms that allow us to quanti
 
 \section{Brief State of Art}
 \label{sec:brief}
-Since the pioneering work \cite{Carrara1983403}, several mathematics and statistics models have been proposed to model landslide susceptibility: deterministic models (\cite{hessd-10-12643-2013},  \cite{doi:10.1080/19475705.2010.498151} and \cite{Neu2012511}), probabilistic models (\cite{Bern198839}, \cite{Chung2003451} and \cite{doi:10.1080/01431160310001618734} ). 
+Since the pioneering work shown in \cite{Carrara1983403}, several mathematical and statistical models have been proposed to model landslide susceptibility: deterministic models (\cite{hessd-10-12643-2013},  \cite{doi:10.1080/19475705.2010.498151} and \cite{Neu2012511}) and probabilistic models (\cite{Bern198839}, \cite{Chung2003451} and \cite{doi:10.1080/01431160310001618734} ). 
 
-It has been used popular classification models such as logistic regression (\cite{akgun2012} and \cite{gaskill} and \cite{garcia2008} ) , neural networks (\cite{garcia2010}, \cite{Melchiorre2011410},\cite{Zeng2001374}, \cite{Ermini2005327} and \cite{Yesilnacar2005251})  and support vector machine (\cite{ballabio2012support} and \cite{tien2012landslide}). 
+Popular classification models have been used such as logistic regression (\cite{akgun2012} and \cite{gaskill} and \cite{garcia2008}) , neural networks (\cite{garcia2010}, \cite{Melchiorre2011410},\cite{Zeng2001374}, \cite{Ermini2005327} and \cite{Yesilnacar2005251})  and support vector machines (\cite{ballabio2012support} and \cite{tien2012landslide}). 
 
 
-According to \cite{van2006landslide} the magnitude of a possible
-slide is difficult to foresee as it depends on the magnitude of the triggering event and the environmental conditions (e.g., height of water table) at the moment of the event. Because of these complex relationships between the dependent variable and causal factors, and since that neural networks are particularly useful for detect complex non-linear relationships in large datasets, that is why this kind of model was chosen, despite the disadvantages such as greater computational burden and proneness to overfitting.  
+According to \cite{van2006landslide}, the magnitude of a possible
+slide is difficult to foresee as it depends on the magnitude of the triggering event and the environmental conditions (e.g., height of water table) at the moment of the event. Because of these complex relationships between the dependent variable and causal factors, and since neural networks are particularly useful for complex non-linear relationships in large datasets, despite the disadvantages such as greater computational burden.  
 
 
 
 \section{Study area}
 \label{sec:studyarea}
-MASS, is formed by 14 municipalities among them it is located San Salvador, the capital of the country. It has 587 $km^{2}$ and according to the most recent census \cite{minecon} it has 1,566,629 inhabitans with a density of population of 2669 hab/km2.  According to geography MASS is extended over a flat erosional surface (650-760 m.a.s.l.), gently sloping to the east towards Ilopango Caldera also known as Ilopango Lake. MASS is bordered to the south by the Balsamo Range and San Jacinto Hill, to the west by San Salvador volcano and with Mariona Hills (refer to Fig. \ref{fig:mass01}). Human settlement is not only restricted to the plain, but spreads up to surrounding heights and volcano flanks.
+MASS is formed by 14 municipalities among them is located San Salvador, the capital of the country. It has 587 $km^{2}$ and according to the most recent census \cite{minecon} it has 1,566,629 inhabitans with a density of population of 2669 hab/km2. MASS is extended over a flat erosional surface (650-760 m.a.s.l.), gently sloping to the east towards Ilopango Caldera also known as Ilopango Lake. MASS is bordered to the south by the Balsamo Range and San Jacinto Hill, to the west by San Salvador volcano and Mariona Hills (refer to Fig. \ref{fig:mass01}). Human settlement is not restricted to the plain, spreads up to surrounding heights and volcano flanks.
 
-All rocks exposed in MASS have volcanic origin and consists of intercaled primary and reworked deposits from Late Tertiary to Holocene age \cite{schmidt1975}. The younger ones are known as Tierra Blanca pyroclastic ash deposits and forms a relative continuous layer in majority of MASS with an average thickness of 4 m \cite{schmidt1975}. These are deposits derived mainly from Ilopango caldera eruptions where they present more than 50 m of thickness \cite{schmidt1975}. Tierra Blanca soils is highly susceptible to erosion, one of the most common dangerous effects of the erosion in this area are landslides during heavy rainfall and earthquake ground shaking \cite{schmidt1975}. Ch\'{a}vez et al. \cite{chavez2014a} identified high and moderate erosion hazard in majority of MASS area. The more recent layer Tierra Blanca, known as Tierra Blanca Joven (TBJ) \cite{hernan2004} present very poor geotechnical properties, especially when there is an increment of soil moisture (i.e. during rainy seasons), which results in high instability susceptibility (\cite{chavez2014b} and \cite{rolo2004}). Several incised rivers and ravines cross MASS area, due the large erosion rates of the area, natural slopes of these watercourses are often close to vertical and can reach highs of more than 10 m. Taking into account this property of volcanic soils, usually vertical slopes are cut to urban and road construction. As Bommer \& Rodriguez \cite{bommer} identified in Central America, although such slopes may remain stable for years, they may become unstable, abruptly and totally under the action of heavy rainfall or seismic shaking. Hern\'{a}ndez \cite{hernan2004} carried out a detailed description of this process in TBJ, where these instabilities are very common. 
-In study area fault trends are characterized by steep dip angles (65\textdegree - 90\textdegree). The main fault system is characterized by an east-west trend; this trend is responsible of the steep northern slope of the El Balsamo Range.  The secondary systems are with north, northwest and northeast trends offset the main fault system and are more active in the present tectonic setting \cite{schmidt1975}. However, all the mentioned fault families appear active. Thus the several fault systems have developed at different times, but been repeatedly activated \cite{rymer1987}. Finally there are also several ringlike faults that can be related to subsurface collapse due to volcanic tectonic subsidence \cite{schmidt1975}.
-Last eruption of San Salvador volcano was 1917.  The majority of the magma's total volume (97\%) extruded from several vents in the Northwest flank of the volcano, outside of MASS. However a fraction of MASS is located under the proximal volcanic hazard zone according to Sofield \cite{sofield2004}. In the steep slopes  San Salvador volcano, especially of Picacho, the highest peak of the volcano, located in the eastern side present a high lahar hazard that threats MASS \cite{major2004}. On the other hand one of the most destructive eruptions in the world history was 430 A.D. TBJ eruption produced by the Ilopango Caldera. According to Dull \cite{dull2004}, that eruption produced total devastation in whole MASS area. 
+All rocks exposed in MASS have volcanic origin and consists of intercaled primary and reworked deposits from Late Tertiary to Holocene age \cite{schmidt1975}. The younger ones are known as Tierra Blanca pyroclastic ash deposits and forms a relative continuous layer in majority of MASS with an average thickness of 4 m \cite{schmidt1975}. These are deposits derived mainly from Ilopango caldera eruptions where they present more than 50 m of thickness \cite{schmidt1975}. Tierra Blanca soils is highly susceptible to erosion, one of the most common dangerous effects of the erosion in this area are landslides during heavy rainfall and earthquake ground shaking \cite{schmidt1975}. Ch\'{a}vez et al. \cite{chavez2014a} identified high and moderate erosion hazard in the majority of MASS area. The more recent layer Tierra Blanca, known as Tierra Blanca Joven (TBJ) \cite{hernan2004} presents very poor geotechnical properties, especially when there is an increment of soil moisture (i.e. during rainy seasons), results in high instability susceptibility (\cite{chavez2014b} and \cite{rolo2004}). Several incised rivers and ravines cross MASS area, due the large erosion rates of the area, natural slopes of these watercourses are often close to vertical and can reach highs of more than 10 m. Taking into account this property of volcanic soils, usually vertical slopes are cut to urban and road construction. As Bommer \& Rodriguez \cite{bommer} identified in Central America, although such slopes may remain stable for years, they may become unstable, abruptly and totally under the action of heavy rainfall or seismic shaking. Hern\'{a}ndez \cite{hernan2004} carried out a detailed description of this process in TBJ, where these instabilities are very common. 
+In study area fault trends are characterized by steep dip angles (65\textdegree - 90\textdegree). The main fault system is characterized by an east-west trend; this trend is responsible the steep northern slope of the El Balsamo Range.  The secondary systems are with north, northwest and northeast trends offset the main fault system and are more active in the present tectonic setting \cite{schmidt1975}. However, all the mentioned fault families appear active. Thus the several fault systems have developed at different times, but been repeatedly activated \cite{rymer1987}. Finally there are also several ringlike faults that can be related to subsurface collapse due to volcanic tectonic subsidence \cite{schmidt1975}.
+Last eruption of San Salvador volcano was in 1917.  The majority of the magma's total volume (97\%) extruded from several vents in the Northwest flank of the volcano, outside of MASS. However a fraction of MASS is located under the proximal volcanic hazard zone according to Sofield \cite{sofield2004}. In the steep slopes  San Salvador volcano, especially of Picacho, the highest peak of the volcano, located in the eastern side presents a high lahar hazard that threats MASS \cite{major2004}. On the other hand one of the most destructive eruptions in the world history was 430 A.D. TBJ eruption produced by the Ilopango Caldera. According to Dull \cite{dull2004}, that eruption produced total devastation in whole MASS area. 
 
 
 
 
 \section{Landslide inventory and data sources of input variables}
 \label{sec:landsinvet}
-The Landslide inventory was developed by Ministry of Environment and Natural Resources (MARN Spanish acronym) and it was conducted in two stages. The first was carried out, based on fieldwork after the 2001 earthquakes in El Salvador. The second stage consisted of a visual inventory of places where there were landslides identified through satellite image from IRS-C sensor (Indian) in the same year.
+The Landslide inventory was developed by Ministry of Environment and Natural Resources (MARN Spanish acronym) and it was conducted in two stages. The first was carried out, based on fieldwork after the 2001 earthquakes in El Salvador. The second stage consisted of a visual inventory of places where identified through satellite image from IRS-C sensor (Indian) in the same year.
 
 
-Once the landslide inventory was finished, 4792 landslides were identified which represent the 0.5\% of the total points georeferenced. In addition to the landslide information the following data sources of input variables was provided by MARN: 
+Once the landslide inventory was finished, 4792 landslides were identified, 0.5\% of the total points georeferenced. In addition to the landslide information, the following data sources of input variables was provided by MARN: 
 
 
 \begin{enumerate}
-\item {\bf Geomorphology:} refers to landforms that result from lithospheric dynamics of geographic area. This variable was obtained in the project of national land use plan in El Salvador. It is unpublished geomorphologic cartography in digital format provided by MARN.
+\item {\bf Geomorphology:} it means landforms that result from lithospheric dynamics of geographic area. This variable was obtained in the project of national land use plan in El Salvador. It is unpublished geomorphologic cartography in digital format provided by MARN.
 
 
 \item {\bf Slope:} Slope gradient is an important component and a
 preparatory cause of landsliding \cite{garcia2008}. It was calculated from digital elevation model (DEM) provided by MARN (scale 1:100,000). 
 
-\item {\bf Geology:} Description of the geology of the area according digitalized geological map of  El Salvador (scale 1:100,000) \cite{weber}.
+\item {\bf Geology:} Description of the geology of the area, geological map of  El Salvador (scale 1:100,000) \cite{weber}.
 
 \item {\bf Rainfall intensity:} From the precipitation database compiled by the
 MARN's weather stations for the period 1970–2001, maximum precipitations were obtained, 
@@ -154,9 +154,9 @@ and then, a contour map was generated through kriging interpolation method.
 
 \item {\bf Peak ground accelaration:} Maximum ground acceleration expressed in Gal for a return period of 500 years. This data was obtained from the evaluation of seismic Hazard in Central America carried out under the framework of RSIS II project \cite{beni2012}.
 
-\item {\bf Road distance:} Distance in kilometers to the nearest road. Road map was obtained from digitalized national cartography created by Centro Nacional de Registros de la Rep\'{u}blica de El Salvador (CNR).
+\item {\bf Road distance:} Distance in kilometers to the nearest road. Road map was obtained from national cartography created by Centro Nacional de Registros de la Rep\'{u}blica de El Salvador (CNR).
 
-\item {\bf Fault distance:} Distance in kilometers to the nearest fault. This information was obtained from according digitalized geological map of El Salvador (scale 1:100,000) \cite{weber}.
+\item {\bf Fault distance:} Distance in kilometers to the nearest fault. This information was obtained from geological map of El Salvador (scale 1:100,000) \cite{weber}.
  
 \end{enumerate}
 
@@ -164,7 +164,7 @@ and then, a contour map was generated through kriging interpolation method.
 
 \section{Artificial Neural Network model for discrete choice}
 Logistic regression represents a neural network with 
-a neuron in the hidden layer and whose output is dichotomous. The following adapted form of the Multilayer Perceptron (MLP) may be used for modeling binary classification problems. In the equation (\ref{eq:ann1}) $x_{k,i}$ are the observed values in the ith input variables belonging to the kth case. The expressions $w_{j,k}$ and $\lambda_{j}$ showed in the equations (\ref{eq:ann1}) and (\ref{eq:ann3}) are the parameters of the model. 
+a neuron in the hidden layer whose output is dichotomous. The following adapted form of the Multilayer Perceptron (MLP) may be used for modeling binary classification problems. In the equation (\ref{eq:ann1}) $x_{k,i}$ are the observed values in the ith input variables belonging to the kth case. The expressions $w_{j,k}$ and $\lambda_{j}$ showed in the equations (\ref{eq:ann1}) and (\ref{eq:ann3}) are the parameters of the model. 
 
 
 \begin{equation}
@@ -192,30 +192,27 @@ p_{i} = \sum_{j=1}^{j^{*}} \lambda_{j} N_{j,i}
 
 In the equation (\ref{eq:ann3}) $p_{i}$ is the the predicting probability for a network with $ k^{*} $ input characteristics and $ j^{*} $ neurons. In the context of the present research, $p_{i} $ represents the probability of landslide ocurrence.
 
-Before estimating the parameters of the neural network model, it is necessary standardize the input variables. In particular for classification problems is more suitable to scale inputs to $[-1,1]$ rather than $[0,1]$ \cite{FAQANN}. The following scaling was applied to each input variable: 
+Before estimating the parameters of the neural network model, it is necessary to standardize the input variables. In particular for classification problems is more suitable to scale inputs to $[-1,1]$ rather than $[0,1]$ \cite{FAQANN}. The following scaling was applied to each input variable: 
 
 \begin{equation}
 z = \frac{x - \bar{x} }{\sigma_{x}}
 \label{eq:scaling}
 \end{equation}
 
-In the equation (\ref{eq:scaling}) $z$ is the new variable transformed, $ \bar{x} $ and $\sigma_{x}$ are, respectively the mean and the standard deviation of the input variable to transform.  
+In the equation (\ref{eq:scaling}) $z$ is the new variable transformed, $ \bar{x} $ and $\sigma_{x}$ the mean and the standard deviation of the input variable to transform.  
 
-The method used for estimating the parameters of the model was an Hybrid Method \cite{McNelis2005}. Firstly heuristic genetic algorithm using a package developed in the R statistical software \cite{rproject} specifically developed for this purpose, was used to obtain a good estimation of the parameters of the model. 
-
-The R package can be accessed from the following web address:
+The method used for estimating the parameters of the model was an Hybrid Method \cite{McNelis2005}. Using a package developed in the R statistical software \cite{rproject} specifically developed to obtain a good estimation of the parameters of the neural network model . The R package can be accessed from the following Web address:
  
 \url{https://goo.gl/PHaaG2}
 
 
-Once a good estimate was obtained, this was occupied as the initial values for the conjugate gradient method implemented in the optim routine of the R statistical software, to obtain a better estimation of the parameters of the model.  
 
 
 \section{Spatial Prediction}
 
 \subsection*{Estimating spatial correlation}
 
-In standard statistical problems, correlation can be estimated from a scatterplot, when several data pairs ${x, y}$ are available. The spatial correlation between two observations of a variable $z(s)$ at locations $s_{1}$ and $s_{2}$ cannot be estimated, as only a single pair is available. To estimate spatial correlation
+In standard statistical problems, correlation can be estimated from a scatterplot, when several data pairs ${x, y}$ are available. The spatial correlation between two observations of a variable $z(s)$ at locations $s_{1}$ and $s_{2}$ cannot be estimated, only a single pair is available. To estimate spatial correlation
 from observational data, it is necessary to make stationarity assumptions
 before we can make any progress. One commonly used form of stationarity
 is intrinsic stationarity, which assumes that the process that generated the
@@ -244,24 +241,25 @@ The predictor assumption is
 \hat{Z(s_{0})} = \sum_{i=1}^{n} w_{i}Z(s_{i})
 \end{equation}
 
-It is a weighted average of the sample values, and $ \sum_{i=1}^{n} w_{i} = 1 $ to ensure unbiasedness. The $w_{i}$'s are the weights that will be estimated. Kriging minimizes the mean squared error of prediction \cite{nicolas2015}. 
+It is a weighted average of the sample values, and $ \sum_{i=1}^{n} w_{i} = 1 $ to ensure unbiasedness. The $w_{i}$'s are the weights that will be estimated. Kriging minimizes the expression (\ref{eq:meankrige}) which is the mean squared error of prediction \cite{nicolas2015}. 
 
 \begin{equation}
-min \ \sigma_{e}^{2} = E\left[Z(s_{0}) - \hat{Z(s_{0})}\right]^{2}
+ E\left[Z(s_{0}) - \hat{Z(s_{0})}\right]^{2}
+\label{eq:meankrige}
 \end{equation}  
 
 
 
 \section{Results}
-The data were randomly divided into three sub-samples, the first was used for the
-estimation of the parameters of the neural network model (training set), the second was used to choose the model with more generalization capability (validation set) and the last was
-used to evaluate how well the model generalize outside of the data set used for estimation (test set). 
+The data were randomly divided into three sub-samples. The first was used for the
+estimation of the parameters of the neural network model (training set), the second was used to choose the model with more generalization capability (validation set), and the last was
+used to evaluate how well the model is able to generalize data not used in the estimation process (test set). 
 
 To determine the number of neurons in the hidden layer, the method of trial and error was used, starting with few neurons and increasing progressively the number of neurons in the hidden layer. Table \ref{annresults}
 summarizes how well the models fit on the training, validation and test sets.
 
 \begin{table}[H]
-\caption{Summary of classification accuracy on the training, validation and test sets for neural network models  }
+\caption{Summary of classification accuracy on the training, validation, and test sets for neural network models  }
 \label{annresults}
 \centering
 \begin{tabular}{ | c | c | c | c | }
