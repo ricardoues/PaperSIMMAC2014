@@ -1,4 +1,4 @@
-\documentclass[11pt,twoside]{rmta2010esp}% For English, use rmta2010eng.cls instead of rmta2010esp.cls
+\documentclass[11pt,twoside]{rmta2010eng}% For English, use rmta2010eng.cls instead of rmta2010esp.cls
 %\pagestyle{myheadings} 
 \usepackage[english, spanish]{babel}
 \usepackage{fancyhdr}
@@ -13,7 +13,7 @@
 \fancyfoot{}
 \fancyfoot[RE]{{\scriptsize{\it Rev.Mate.Teor.Aplic.} (ISSN 1409-2433) {Vol. 19}(1): 1--10, January 2012}}
 \fancyfoot[LO]{{\scriptsize{\it Rev.Mate.Teor.Aplic.} (ISSN 1409-2433) {Vol. 19}(1): 1--10, January 2012}}
-\paginas{1}{10} % Numeros de pgina, la versión final la pone el editor; Page numbers, the Editor puts the final numbers
+\paginas{1}{10} % Numeros de pagina, la version final la pone el editor; Page numbers, the Editor puts the final numbers
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphics}
@@ -26,6 +26,20 @@
 \usepackage{authblk}
 \usepackage{hyperref}
 \usepackage{textcomp}
+\usepackage[T1]{fontenc} % Setting Times New Roman font 
+\usepackage{mathptmx}    % Setting Times New Roman font 
+
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ textwidth=15cm, 
+ textheight=21cm
+ }
+
+
+
+
 
 \DeclareGraphicsExtensions{.bmp,.png,.pdf,.jpg,.eps}
 
@@ -53,7 +67,7 @@ Combinando redes neuronales y geoestad\'{i}stica para evaluaci\'{o}n de deslizam
 \affil[3]{National Institute of Health, Ministry of Health of El Salvador, El Salvador.}
 \affil[4]{Ministry of Environment and Natural Resources of El Salvador.}
 
-
+\date{}
 
 \maketitle
 
@@ -99,7 +113,7 @@ Due to the above, it is necessary to implement mechanisms that allow us to quant
  \begin{center}
   \begin{figure}
    \centering
-   \includegraphics[scale=0.70]{MASS_mapa_1}
+   \includegraphics[scale=0.70]{MASS_map_1.eps}
    \caption{\small{Location of El Salvador in Central America, map of El Salvador with location of the Metropolitan Area of San Salvador (MASS) and its topography.}}
    \label{fig:mass01}
   \end{figure}
@@ -349,7 +363,7 @@ The results obtained through geostatistical methodology met the assumptions for 
 \begin{center}
   \begin{figure}
    \centering
-   \includegraphics[scale=0.73]{MASS_mapa_2}
+   \includegraphics[scale=0.73]{MASS_map_2.eps}
    \caption{\small{Landslide hazard map MASS where the landslide probability of occurrence is shown.}}
    \label{fig:mass02}
   \end{figure}
